@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var myScrollView: UIScrollView!
     
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         coolScrollView.backgroundColor = UIColor.systemGray5
         coolScrollView.contentOffset = CGPoint(x: 0, y: 0)
         coolScrollView.contentSize = CGSize(width: width * pages, height: height)
-       
+        coolScrollView.delegate = self
         coolScrollView.contentInset = UIEdgeInsets.zero
         coolScrollView.isDirectionalLockEnabled = false
         coolScrollView.bounces = true
@@ -67,7 +67,37 @@ class ViewController: UIViewController {
         objectTwo.backgroundColor = UIColor.red
         coolScrollView.addSubview(objectTwo)
     }
+    
+    // exec when scrolled
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("DiD Scroll")
+    }
 
 
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        print("Did Zoom")
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("Begin Dragging")
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        print("Will end dragging")
+    }
+    
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        print("Will begin Decelerating")
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("Did end Decelerating")
+    }
+    
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        print("Ended Scrolling Animation")
+    }
 }
 
